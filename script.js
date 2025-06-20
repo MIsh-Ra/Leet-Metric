@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
     function UpdateUI(data){
+        statsCardContainer.innerHTML = '';
+
         statsContainer.style.display='block'
 
         const easySolved = data["easySolved"]
@@ -151,8 +153,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
     searchButton.addEventListener('click', async function () {
     const username = usernameInput.value;
-    let total 
-    if (valiadteUsername(username)) {
+    let state = true 
+    if (valiadteUsername(username) && state===true) {
 
         fetchUserDetails(username)
         .then( function(data){
@@ -161,8 +163,8 @@ document.addEventListener('DOMContentLoaded',function(){
         searchButton.disabled = false
                         
         UpdateUI(data);
-
         })
     }
+
 });
 })
